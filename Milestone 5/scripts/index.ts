@@ -18,20 +18,25 @@ declare var html2pdf: any;
       const level = (group.querySelector('[name="level"]') as HTMLInputElement).value;
       const degree = (group.querySelector('[name="degree"]') as HTMLInputElement).value;
       const institution = (group.querySelector('[name="institution"]') as HTMLInputElement).value;
-      const year = (group.querySelector('[name="year"]') as HTMLInputElement).value;
       return `
         <div style="margin-bottom: 15px;">
-          <strong>${level}</strong><br/>
-          <span>${degree} - ${institution} (${year})</span>
+          <strong class="education_name">${level}</strong>
+          <div class="education_para1">➤ ${degree}</div>
+          <div class="education_para2">➤ ${institution}</div>
         </div>`;
     }).join("");
 
     const experienceGroups = document.querySelectorAll(".experience-group");
     const experienceHTML = Array.from(experienceGroups).map(group => {
       const company = (group.querySelector('[name="company"]') as HTMLInputElement).value;
-      const experienceYears = (group.querySelector('[name="experienceYears"]') as HTMLInputElement).value;
       const para = (group.querySelector('[name="experience"]') as HTMLTextAreaElement).value;
-      return `<p><strong>${company} - ${experienceYears} year(s)</strong></p><p>${para}</p>`;
+      return `
+      <div style="margin-bottom: 15px;">
+        <p class="company_name">
+          <strong>${company}</strong>
+        </p>
+        <p class="company_para">➤ ${para}</p>
+      </div>`;
     }).join("");
 
     const skills = (document.getElementById("skills") as HTMLInputElement).value.split(",");
@@ -62,7 +67,7 @@ declare var html2pdf: any;
               <h2 class="name-head">${name}</h2>
             </div>
             <div class="sub-right">
-              <h2 class="about">About Me</h2>
+              <h2 class="about">Objective</h2>
               <p class="about-para">${about}</p>
               <h2 class="education">Education</h2>
               <p class="edu-area">${educationHTML}</p>
@@ -87,7 +92,7 @@ declare var html2pdf: any;
               filename: 'my_resume.pdf',
               image: { type: 'jpeg', quality: 0.98 },
               html2canvas: { scale: 2 },
-              jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             html2pdf().from(resumeElement).set(opt).save();
           }, 500); 
@@ -114,8 +119,9 @@ declare var html2pdf: any;
             }
             body {
               font-family: Arial, sans-serif;
-              background-color: #e8f0fe;
+              background-color: white;
               padding: 20px;
+              margin: 0;
             }
           </style>
         `;
@@ -162,7 +168,6 @@ function addEducation() {
     <input type="text" name="level" placeholder="Education Level (e.g., Graduation, College, School)" required />
     <input type="text" name="degree" placeholder="Degree (e.g. Program)" required />
     <input type="text" name="institution" placeholder="Institution" required />
-    <input type="number" name="year" placeholder="Graduation Year" required />
   `;
 
   container?.appendChild(group);
@@ -179,10 +184,8 @@ function addExperience() {
 
   group.innerHTML = `
     <input type="text" name="company" placeholder="Company" />
-    <input type="number" name="experienceYears" placeholder="Years of Experience" />
     <textarea name="experience" placeholder="Experience Description" required></textarea>
   `;
 
   container?.appendChild(group);
 }
-

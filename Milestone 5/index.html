@@ -12,39 +12,37 @@
   <h1>Create Resume</h1>
   <form id="resumeForm">
 
-    <label>Upload Picture:</label>
+    <label id="uoload_pic">Upload Picture:</label>
     <input type="file" id="file" required /><br/>
 
-     <h2>Personal Info</h2>
+    <h2 id="personal_section">Personal Info</h2>
     <input type="text" id="name" placeholder="Full Name" required />
     <input type="email" id="email" placeholder="Email" required />
     <input type="text" id="phone" placeholder="Phone" required />
     <input type="text" id="address" placeholder="Address" required />
-    <textarea id="about" placeholder="About Me" required></textarea>
+    <textarea id="about" placeholder="Objective" required></textarea>
 
-    <h2>Education</h2>
+    <h2 id="education_section">Education</h2>
     <div id="educationContainer">
         <div class="education-group">
             <input type="text" name="level" placeholder="Education Level (e.g., Graduation, College, School)" required />
             <input type="text" name="degree" placeholder="Degree (e.g. Program)" required />
             <input type="text" name="institution" placeholder="Institution" required />
-            <input type="number" name="year" placeholder="Graduation Year" required />
         </div>
     </div>
     <button type="button" class="education-button" onclick="addEducation()">More Education</button>
 
-     <h2>Experience</h2>
+     <h2 id="experience_section">Experience</h2>
     <div id="experienceContainer">
         <div class="experience-group">
             <input type="text" name="company" placeholder="Company" />
-            <input type="number" name="experienceYears" placeholder="Years of Experience" />
             <textarea name="experience" placeholder="Experience Description" required></textarea>
         </div>
     </div>
     <button type="button" class="experience-button" onclick="addExperience()">More Experience</button>
 
 
-    <h2>Skills + Hobbies</h2>
+    <h2 id="skill_section">Skills + Hobbies</h2>
     <input type="text" id="skills" placeholder="Skills (comma separated)" required />
     <input type="text" id="hobbies" placeholder="Hobbies (comma separated)" required />
 

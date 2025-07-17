@@ -21,6 +21,8 @@ body {
 
 h1 {
   text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 form {
@@ -38,6 +40,15 @@ input, textarea, button {
   margin: 10px 0;
   padding: 10px;
   font-size: 16px;
+}
+
+#personal_section{
+  margin-top: -1rem;
+}
+
+#education_section, #experience_section, #skill_section{
+  margin-top: 1.5rem;
+  margin-bottom: 0.7rem;
 }
 
 button {
@@ -142,6 +153,10 @@ h2 {
     box-shadow: 6px 0 0 #00bfff; 
 }
 
+.education, .experience{
+    margin-bottom: -0.8rem;
+  }
+
 .about-para, .edu-area, .exp-area{
     width: 100%;
     font-size: 16px;
@@ -168,20 +183,10 @@ h2 {
   display: block;
 }
 
-.education-group {
+.education-group, .experience-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.experience-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  padding: 2px 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
@@ -215,4 +220,117 @@ h2 {
 
 #downloadBtn:hover, #printBtn:hover {
   background: #004080;
+}
+
+.company_name, .education_name{
+  font-size: 20px;
+  padding-right: 8px;
+}
+
+.education_para1, .education_para2, .company_para{
+  font-size: 15px;
+  padding-right: 8px;
+}
+
+@media (max-width: 768px){
+  body{
+    padding: 8px;
+  }
+  form{
+    padding: 10px;
+  }
+  input, textarea, button {
+    margin: 7px 0;
+    padding: 8px;
+    font-size: 12px;
+  }
+  #education_section, #experience_section, #skill_section{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  #uoload_pic{
+    font-size: 13px;
+  }
+  #file{
+    margin-top: -0.1rem;
+  }
+  .education-group, .experience-group{
+    padding: 1px 5px;
+  }
+  .resume{
+    max-width:400px;
+  }
+  .left, .sub-right {
+    padding: 3px;
+  }
+  .left{
+    min-width: 38%;
+  }
+  .right{
+    min-width: 62%;
+  }
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    margin: 0 auto 10px;
+  }
+  .name-head{
+    padding: 0px 2px 12px 2px;
+    font-size: 22px;
+  }
+  .section-title{
+    margin-top: 13px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-right: 8px;
+  }
+  .left p{
+    padding-bottom: 8px;
+    font-size: 6px;
+  }
+  ul{
+    margin: 2px;
+    padding-left: 10px;
+    padding-bottom: 8px;
+  }
+  .left li{
+    padding-bottom: 7px;
+    font-size: 10px;
+  }
+  .icon-circle{
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    font-size: 8px;
+  }
+  .about, .education, .experience{
+    width: 55%;
+    padding: 8px 10px;
+    border-radius: 20px;
+    font-size: 15px;
+  }
+  .education, .experience{
+    margin-bottom: -0.8rem;
+  }
+  .about-para, .edu-area, .exp-area{
+    font-size: 8px;
+    padding: 6px;
+    margin-bottom: 5px;
+  }
+  #downloadBtn, #printBtn{
+    width: 70%;
+    padding: 10px 10px;
+    border-radius: 10px;
+  }
+  .company_name, .education_name{
+    font-size: 15px;
+  }
+  .education_para1, .education_para2, .company_para{
+    font-size: 8px;
+    padding-right: 2px;
+  }
+  .education_para1{
+    padding-bottom: -2rem;
+  }
 }

@@ -15,19 +15,24 @@
             const level = group.querySelector('[name="level"]').value;
             const degree = group.querySelector('[name="degree"]').value;
             const institution = group.querySelector('[name="institution"]').value;
-            const year = group.querySelector('[name="year"]').value;
             return `
         <div style="margin-bottom: 15px;">
-          <strong>${level}</strong><br/>
-          <span>${degree} - ${institution} (${year})</span>
+          <strong class="education_name">${level}</strong>
+          <div class="education_para1">➤ ${degree}</div>
+          <div class="education_para2">➤ ${institution}</div>
         </div>`;
         }).join("");
         const experienceGroups = document.querySelectorAll(".experience-group");
         const experienceHTML = Array.from(experienceGroups).map(group => {
             const company = group.querySelector('[name="company"]').value;
-            const experienceYears = group.querySelector('[name="experienceYears"]').value;
             const para = group.querySelector('[name="experience"]').value;
-            return `<p><strong>${company} - ${experienceYears} year(s)</strong></p><p>${para}</p>`;
+            return `
+      <div style="margin-bottom: 15px;">
+        <p class="company_name">
+          <strong>${company}</strong>
+        </p>
+        <p class="company_para">➤ ${para}</p>
+      </div>`;
         }).join("");
         const skills = document.getElementById("skills").value.split(",");
         const hobbies = document.getElementById("hobbies").value.split(",");
@@ -54,7 +59,7 @@
               <h2 class="name-head">${name}</h2>
             </div>
             <div class="sub-right">
-              <h2 class="about">About Me</h2>
+              <h2 class="about">Objective</h2>
               <p class="about-para">${about}</p>
               <h2 class="education">Education</h2>
               <p class="edu-area">${educationHTML}</p>
@@ -78,7 +83,7 @@
                             filename: 'my_resume.pdf',
                             image: { type: 'jpeg', quality: 0.98 },
                             html2canvas: { scale: 2 },
-                            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
                         };
                         html2pdf().from(resumeElement).set(opt).save();
                     }, 500);
@@ -89,7 +94,7 @@
                 const resumeElement = document.getElementById("resume");
                 if (!resumeElement)
                     return;
-                const printWindow = window.open('', '', 'height=600,width=800');
+                const printWindow = window.open('', '', 'height=800,width=800');
                 const styles = Array.from(document.querySelectorAll('link[rel="stylesheet"], style'))
                     .map(style => style.outerHTML)
                     .join('\n');
@@ -101,8 +106,9 @@
             }
             body {
               font-family: Arial, sans-serif;
-              background-color: #e8f0fe;
+              background-color: white;
               padding: 20px;
+              margin: 0;
             }
           </style>
         `;
@@ -113,9 +119,7 @@
               ${styles}
               ${customStyle}
             </head>
-            <body>
-              ${resumeElement.outerHTML}
-            </body>
+            ${resumeElement.outerHTML}
           </html>
         `);
                 printWindow === null || printWindow === void 0 ? void 0 : printWindow.document.close();
@@ -142,7 +146,6 @@ function addEducation() {
     <input type="text" name="level" placeholder="Education Level (e.g., Graduation, College, School)" required />
     <input type="text" name="degree" placeholder="Degree (e.g. Program)" required />
     <input type="text" name="institution" placeholder="Institution" required />
-    <input type="number" name="year" placeholder="Graduation Year" required />
   `;
     container === null || container === void 0 ? void 0 : container.appendChild(group);
 }
@@ -155,7 +158,6 @@ function addExperience() {
     group.style.marginBottom = '10px';
     group.innerHTML = `
     <input type="text" name="company" placeholder="Company" />
-    <input type="number" name="experienceYears" placeholder="Years of Experience" />
     <textarea name="experience" placeholder="Experience Description" required></textarea>
   `;
     container === null || container === void 0 ? void 0 : container.appendChild(group);
